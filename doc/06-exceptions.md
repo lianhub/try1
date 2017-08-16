@@ -1,75 +1,50 @@
-# Exceptions
-
-All the exceptions thrown in Redaktilo live in the `Gnugat\Redaktilo\Exception`
-namespace and implement a common interface allowing you to catch any of them
-easily:
-
-```php
-<?php
-
-try {
-
-    // any operations made with Redaktilo
-
-} catch (\Gnugat\Redaktilo\Exception\Exception $e) { ... }
-```
-
-Redaktilo's exceptions all have a descriptive message allowing developers to
-understand what went wrong. If the message is not enough, use their getter
-to get more context.
+# Misc
 
 Here's the list of the exceptions that can be thrown:
 
-* [CommandNotFoundException](#commandnotfoundexception)
-* [NotSupportedException](#notsupportedexception)
-* [PatternNotFoundException](#patternnotfoundexception)
+* [Shrink SD Card](#shrink-sd-card)
+* [Map Windows Share-folder in Ubuntu](#map-windows-share-folder-in-ubuntu)
+* [Links](#links)
+* [ESXI Issues](#esxi-issues)
 * [InvalidLineNumberException](#invalidlinenumberexception)
 * [DifferentLineBreaksFoundException](#differentlinebreaksfoundexception)
 * [FileNotFoundException](#filenotfoundexception)
 * [IOException](#ioexception)
 * [InvalidArgumentException](#invalidargumentexception)
 
-## CommandNotFoundException
+## Shrink SD Card
 
-```php
-<?php
+Firstly, create share folder for Ubuntu VM (/mnt/hgfs/share-folder/).
 
-namespace Gnugat\Redaktilo\Exception;
+Then please refer to links:
+* [Easy Resize and Back up Raspberry Pi SD Card with Ubuntu](https://www.htpcguides.com/easy-resize-and-back-up-raspberry-pi-sd-card-with-ubuntu/)
+* [How to Use SD Card Reader in VMPlayer and VMWorkstation](https://www.htpcguides.com/how-to-use-sd-card-reader-in-vmplayer-and-vmworkstation/)
+* [Files missing in /mnt/hgfs on Ubuntu VM?](https://askubuntu.com/questions/591664/files-missing-in-mnt-hgfs-on-ubuntu-vm)
 
-class CommandNotFoundException extends \Exception implements Exception
-{
-    public function getName();
-    public function getCommands();
-}
-```
+## Map Windows Share-folder in Ubuntu
 
-## NotSupportedException
+please refer to link: [How to map a network drive?](https://askubuntu.com/questions/46183/how-to-map-a-network-drive)
+* smbclient -L 192.168.2.1 -U jerry
+* sudo mount -t cifs -o username=jerry,vers=1.0 //192.168.2.1/jerry /media/share-data/
+* if "host is down", use "vers=1.0, or 2.0, 3.0"
+* sudo chmod -R 755 /media/share-data
+* sudo -i (or su -)
 
-```php
-<?php
+## Links
 
-namespace Gnugat\Redaktilo\Exception;
+* [Booting Embedded Linux in One Second](https://embexus.com/2017/05/16/embedded-linux-fast-boot-techniques/)
+* [Build a GPS live tracking system](https://embexus.com/2017/07/11/build-a-gps-live-tracking-system/)
+* [Diymall Vk-172 G-mouse Usb Gps Dongle u-blox7](http://www.diymalls.com/vk172-GPS-Module)
+* google: build embedded linux for diy board
+* [Homemade ARM Board Running Linux with LCD](http://www.circuitvalley.com/2015/12/homemade-board-linux-LCD-uboot-porting-corsscompile.html)
 
-class NotSupportedException extends \Exception implements Exception
-{
-    public function getPattern();
-    public function getSearchStrategies();
-}
-```
+## ESXI Issues
 
-## PatternNotFoundException
-
-```php
-<?php
-
-namespace Gnugat\Redaktilo\Exception;
-
-class PatternNotFoundException extends \Exception implements Exception
-{
-    public function getPattern();
-    public function getText();
-}
-```
+* Export/Import(deploy) with `OVF` formats
+* Use `BleachBit` to zero free-spaces
+* [How to wipe free disk space in Linux?](https://superuser.com/questions/19326/how-to-wipe-free-disk-space-in-linux)
+* [Growing, thinning, and shrinking virtual disks for VMware ESX and ESXi](https://kb.vmware.com/s/article/1002019)
+* Use `UNetbootin` to write ESXI ISO image (Using `Win32DiskImager` is not working)
 
 ## InvalidLineNumberException
 

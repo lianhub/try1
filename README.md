@@ -1,7 +1,6 @@
-# Redaktilo
+# My Personal website
 
-Redaktilo allows you to find, insert, replace and remove lines using an
-editor-like object.
+This website includes documentations for my projects.
 
 *Because your code too needs an editor to manipulate files*.
 
@@ -25,54 +24,6 @@ use Gnugat\Redaktilo\EditorFactory;
 
 $editor = EditorFactory::createEditor();
 ```
-
-## Real life example
-
-For our example, we will create a [`KernelManipulator`](https://github.com/sensiolabs/SensioGeneratorBundle/blob/8b7a33aa3d22388443b6de0b0cf184122e9f60d2/Manipulator/KernelManipulator.php)
-similar to the one we can find in [SensioGeneratorBundle](https://github.com/sensiolabs/SensioGeneratorBundle).
-
-It takes a bundle's fully qualified classname and inserts it in the `AppKernel`
-file:
-
-```php
-<?php
-
-namespace Sensio\Bundle\GeneratorBundle\Manipulator;
-
-use Gnugat\Redaktilo\Editor;
-
-class KernelManipulator extends Manipulator
-{
-    protected $editor;
-    protected $appKernelFilename;
-
-    public function __construct(Editor $editor, $appKernelFilename)
-    {
-        $this->editor = $editor;
-        $this->appKernelFilename = $appKernelFilename;
-    }
-
-    public function addBundle($bundle)
-    {
-        $appKernel = $this->editor->open($this->appKernelFilename);
-        $newBundle = "            new $bundle(),";
-        if ($this->editor->hasBelow($appKernel, $newBundle)) {
-            $message = sprintf('Bundle "%s" is already defined in "AppKernel::registerBundles()".', $bundle);
-
-            throw new \RuntimeException($message);
-        }
-        $this->editor->jumpBelow($appKernel, '        );');
-        $this->editor->insertAbove($appKernel, $newBundle);
-        $this->editor->save($appKernel);
-
-        return true;
-    }
-}
-```
-
-As you can see it's easier to read and to understand than
-[the original PHP token parsing](https://github.com/sensiolabs/SensioGeneratorBundle/blob/8b7a33aa3d22388443b6de0b0cf184122e9f60d2/Manipulator/KernelManipulator.php).
-
 ## Further documentation
 
 You can see the current and past versions using one of the following:
@@ -80,13 +31,6 @@ You can see the current and past versions using one of the following:
 * the `git tag` command
 * the [releases page on Github](https://github.com/gnugat/redaktilo/releases)
 * the file listing the [changes between versions](CHANGELOG.md)
-
-You can find more documentation at the following links:
-
-* [copyright and MIT license](LICENSE)
-* [versioning and branching models](VERSIONING.md)
-* [contribution instructions](CONTRIBUTING.md)
-* [migration to 2.0 instructions](UPGRADE-2.0.md)
 
 Next readings:
 

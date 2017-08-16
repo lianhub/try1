@@ -1,205 +1,114 @@
-# Redaktilo Code Reference
+# PCB
 
-* [Editor API](#editor-api)
-    * [Filesystem operations](#filesystem-operations)
-    * [Content navigation](#content-navigation)
-    * [Content manipulation](#content-manipulation)
-    * [Commands](#commands)
+* [Library Framework](#library-framework)
+* [Schematic Draft](#schematic-draft)
+* [Value and Partno](#value-and-partno)
+* [BOM](#bom)
+    * [Firefox Browser Extension](#firefox--browser-extension)
+    * [RunWith](#runwith)
+    * [Buttonize Digi-Key Part Number](#buttonize-digi-key-part-number)
+* [Finalize Schematic](#finalize-schematic)    
+* [Finishing Board](#finishing-board)   
+* [View in Gerbv](#view-in-gerbv)
 * [Text API](#text-api)
     * [Side note on LineBreak](#side-note-on-linebreak)
 * [File API](#file-api)
 
-## Editor API
+## Library Framework
 
-The main stateless service:
+We use this framework of library folders:
+* Eagle
+* Projects
+* Ex
 
-```php
-<?php
+## Schematic Draft
 
-namespace Gnugat\Redaktilo;
+Draw schematic draft:
+* Find as much components (with correct footprint) as you can.
+* [Which Oscillator Output Signal is Best for Your Application?](http://blog.bliley.com/selecting-the-best-signal-type-for-your)
 
-class Editor
-{
-    public function open($filename, $force = false);
-    public function save(File $file, $filename = null);
+## Value and Partno
 
-    // Throw Gnugat\Redaktilo\Exception\PatternNotFoundException
-    public function jumpAbove(Text $text, $pattern, $location = null);
-    public function jumpBelow(Text $text, $pattern, $location = null);
-    public function hasBelow(Text $text, $pattern, $location = null);
-    public function hasAbove(Text $text, $pattern, $location = null);
+Based on partlist and BOM excel sheet:
+* use: `D:\EAGLE-Tools\bom-ex\value-partno\write-sheets.js`.
 
-    public function insertAbove(Text $text, $addition, $location = null);
-    public function insertBelow(Text $text, $addition, $location = null);
-    public function replace(Text $text, $replacement, $location = null);
-    public function replaceAll(Text $text, $pattern, $replacement);
-    public function remove(Text $text, $location = null);
+## BOM
 
-    public function run($name, array $input); // Throws Gnugat\Redaktilo\Exception\CommandNotFoundException
-}
-```
+Two websites: https://octopart.com/, DigiKey
 
-You can create one instance and use it everywhere:
+### Firefox Browser Extension
 
-```php
-<?php
-require_once __DIR__.'/vendor/autoload.php';
+Please refer to:
+* [Your first extension](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Your_first_WebExtension)
+* To install: Open `about:debugging` in Firefox, click `Load Temporary Add-on` to select your extension.
 
-use Gnugat\Redaktilo\EditorFactory;
+### RunWith
 
-$editor = EditorFactory::createEditor();
-```
+Please refer to:
+* [Runs the selected string as a command line parameter of a local program via right-click or Tools menu.](https://addons.mozilla.org/en-US/firefox/addon/runwith/)
+* This method is deprecated: as it is not compatible with new version Firefox.
 
-### Filesystem operations
+### Buttonize Digi-Key Part Number
 
-Trying to open a non existing file will raise an exception, except if `true` is
-passed as the second parameter. In any case nothing will happen on the
-filesystem until the `save` method is called.
-
-```php
-<?php
-require_once __DIR__.'/vendor/autoload.php';
-
-use Gnugat\Redaktilo\EditorFactory;
-
-$editor = EditorFactory::createEditor();
-try {
-    $file = $editor->open('/tmp/new.txt');
-} catch (\Gnugat\Redaktilo\Exception\FileNotFoundException $e) {
-    // The file doesn't exist
-}
-$file = $editor->open('/tmp/new.txt', true); // Forces file creation when it doesn't exist
-
-// ... Make some manipulation on the file
-
-$editor->save($file); // Actually writes on the filesystem
-```
-
-### Content navigation
-
-`Editor` relies on `SearchEngine` in order to find a given pattern in a `Text`
-and provides by default the following `SearchStrategies`:
-
-* regular expression
-* strict equality (`===`)
-
-If the pattern isn't found, or if the pattern isn't supported by any strategies
-an exception will be thrown. If the pattern is found, the `Text`'s current line
-number will be set to it.
-
-The search is done relatively to the current line (or, if the third argument is
-given, to the given location): `jumpAbove` will start from it and then the line
-above, etc until the top is reached while `jumpBelow` will go downward until the
-bottom is reached.
-
-In order to check the presence of a pattern without having to jump to the line
-found, `hasAbove` and `hasBelow` methods can be used: it doesn't throw any
-exceptions (checks from top to bottom).
-
-```php
-<?php
-require_once __DIR__.'/vendor/autoload.php';
-
-use Gnugat\Redaktilo\EditorFactory;
-
-$editor = EditorFactory::createEditor();
-$file = $editor->open('/tmp/life-of-brian.txt', true);
-try {
-    $editor->jumpAbove($file, '[A guard sniggers]'); // strict equality
-} catch (\Gnugat\Redaktilo\Exception\NotSupportedException $e) {
-    // The pattern isn't supported by any registered strategy (shouldn't occur often)
-} catch (\Gnugat\Redaktilo\Exception\PatternNotFoundException $e) {
-    // The pattern hasn't been found in the file
-}
-if ($editor->hasBelow($file, '/sniggers/', 0)) { // regular expression
-    // The pattern exists.
-}
-```
+We copy/modify example of "native-messaging":
+* [Example extensions](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Examples)
+* D:\EAGLE-Tools\bom-ex\runwith-native-messaging\add-on-new: `manifest.json`
+* --- background.js: connect to `ping_pong` app
+* --- find-dknumber.js: `buttonize` Digi-Key part number.
+* Windows Registry for ping_pong app:
+* --- [App Manifest Location](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Native_manifests#Manifest_location)
+* --- D:\EAGLE-Tools\bom-ex\runwith-native-messaging: `ping-pong.reg`
+* D:\EAGLE-Tools\bom-ex\runwith-native-messaging\app: `ping_pong.json`
+* --- which calls: `ping_pong_win.bat`
+* --- which calls: `D:\EAGLE-Tools\bom-ex\Grab-Bag-master\Bom-ex\new-addDKPartToBom-ex.py`
+* --- which adds to: `D:\EAGLE-Tools\bom-ex\*-db.txt`
 
 > **Note**: to jump to a given line number, you can directly use:
 > `$text->setCurrentLineNumber($x);`.
 
-### Content manipulation
+## Finalize Schematic
 
-Manipulations are done by default to the current line (or, if the third argument
-is given, to the given location).
+Finalize schematic:
+* Collect all components to `D:\EAGLE-Tools\bom-ex\*-db.txt`
+* Replace components with correct attributes: `value`, `PARTNO` (manufacturer)
+* `PARTNO` (manufacturer) is the keyword for matching items in database
+* Check with `D:\EAGLE-Tools\bom-ex\mybom-ex.ulp`: click `Load DB`
 
-Inserting a new line will set the current one to it.
+## Finishing Board
 
-```php
-<?php
-require_once __DIR__.'/vendor/autoload.php';
+Please refer to:
+* [How to change font size throughout brd](https://www.element14.com/community/thread/31231/l/how-to-change-font-size-throughout-brd?displayFullThread=true)
+* [How do I change all fonts to vector on the same PCB at once?](https://www.element14.com/community/thread/18176/l/how-do-i-change-all-fonts-to-vector-on-the-same-pcb-at-once?displayFullThread=true)
 
-use Gnugat\Redaktilo\EditorFactory;
+To smash all the parts, try:
+* display none tOrigin bOrigin;
+* group all;
+* smash (>0 0);
+* display last;
 
-$replace = function ($line) {
-    return strtoupper($line);
-};
+To change the font and ratio, try:
+* display none tNames bNames;
+* group all;
+* change font vector (>0 0);
+* change size 40mil (C>0 0);
+* change ratio 15 (>0 0);
+* display last;
 
-$editor = EditorFactory::createEditor();
-$spamMenu = $editor->open('/tmp/spam-menu.txt', true);
-$editor->insertAbove($spamMenu, 'Egg'); // Current line number: 0
-$editor->insertBelow($spamMenu, 'Bacon'); // Current line number: 1
-$editor->replace($spamMenu, $replace);
-$editor->replaceAll($spamMenu, '/*/', 'Spam');
-$editor->remove($spamMenu);  // Current line number: 0
+## View in Gerbv
 
-$editor->save($spamMenu, '/tmp/spam-menu.txt'); // Necessary to actually apply the changes on the filesystem
-```
-
-### Commands
-
-You can define your own commands and use them through `Editor#run()`.
+Please refer to:
+* [drill layer wrong size](https://www.element14.com/community/thread/55005/l/drill-layer-wrong-size?displayFullThread=true)
+* Right click main.drd layer, and select `Edit file format` dialog.
+* Turn off auto detect and set 5 digit.
 
 ## Text API
 
 One of the main entity:
 
-```php
-<?php
-
-namespace Gnugat\Redaktilo;
-
-class Text
-{
-    // factory methods
-    public static function fromString($string);
-    public static function fromArray(array $lines, $lineBreak = PHP_EOL);
-
-    public function getLines();
-    public function setLines(array $lines);
-    public function getLength();
-
-    public function getLineBreak();
-    public function setLineBreak($lineBreak);
-
-    public function map($callback);
-
-    // Throws InvalidLineNumberException if $lineNumber is not a positive integer lower than the length
-    public function setCurrentLineNumber($lineNumber);
-    public function getCurrentLineNumber();
-    public function incrementCurrentLineNumber($number);
-    public function decrementCurrentLineNumber($number);
-
-    // Throws InvalidLineNumberException if $lineNumber is not a positive integer lower than the length
-    public function getLine($lineNumber = null);
-    public function setLine($line, $lineNumber = null);
-}
-```
-
 > **Important**: `lines` is an array of string stripped from their line break
 > character.
 
 If you need to manipulate a simple string you can use `Text::fromString`:
-
-```php
-<?php
-require_once __DIR__.'/vendor/autoload.php';
-
-use Gnugat\Redaktilo\Text;
-
-$text = Text::fromString("why do witches burn?\n...because they're made of... wood?\n");
-```
 
 > **Important**: please note that upon creation, the current line number is
 > initialized to the first line: `0` (array indexed).
@@ -216,33 +125,6 @@ done using the following rules:
 ## File API
 
 The other main entity:
-
-```php
-<?php
-
-namespace Gnugat\Redaktilo;
-
-class File extends Text
-{
-    public function getFilename();
-    public function setFilename($filename);
-
-    // ... (Text methods)
-}
-```
-
-The best way to create it is to use the `Editor`:
-
-```php
-<?php
-require_once __DIR__.'/vendor/autoload.php';
-
-use Gnugat\Redaktilo\EditorFactory;
-
-$editor = EditorFactory::createEditor();
-$file = $editor->open('/tmp/and-now-for-something-completly-different.txt');
-// ... Edit the file
-$editor->save($file); // Actually writes on the filesystem
 
 ## Next readings
 

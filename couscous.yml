@@ -1,10 +1,11 @@
 template:
-    url: https://github.com/CouscousPHP/Template-Light.git
+    url: https://github.com/lianhub/Template-Light.git
+# url: https://github.com/CouscousPHP/Template-Light.git
 
 baseUrl: https://lianhub.github.io/try1
 
-title: Redaktilo
-subTitle: An easy "line manipulation" PHP lib - jump, insert and do anything!
+title: My personal website
+subTitle: documentations for myself!
 
 github:
     user: lianhub
@@ -16,20 +17,35 @@ menu:
             text: Home
             relativeUrl:
         tutorial:
-            text: Tutorial
+            text: Couscous Notes
             relativeUrl: doc/01-tutorial.html
         use-cases:
-            text: Use cases
+            text: EtherCAT Master
             relativeUrl: doc/02-use-cases.html
         reference:
-            text: Reference
+            text: PCB
             relativeUrl: doc/03-reference.html
         vocabulary:
-            text: Vocabulary
+            text: Kinetis
             relativeUrl: doc/04-vocabulary.html
         extending:
-            text: Extending
+            text: XMOS
             relativeUrl: doc/05-extending.html
         exceptions:
-            text: Exceptions
+            text: Misc
             relativeUrl: doc/06-exceptions.html
+        twincat:
+            text: TwinCAT
+            relativeUrl: doc/07-twincat.html
+        folders:
+            text: Folders
+            relativeUrl: doc/08-folders.html
+        uboot:
+            text: U-Boot
+            relativeUrl: doc/09-uboot.html
+        yocto:
+            text: Yocto-SDK BBB DTS
+            relativeUrl: doc/10-yocto.html
+        ads:
+            text: ADS
+            relativeUrl: doc/11-ads.html

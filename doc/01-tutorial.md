@@ -1,8 +1,8 @@
-# Usage
+# Couscous Notes
 
 This chapter shows you how to use Redaktilo and contains the following sections:
 
-* [The Editor](#the-editor)
+* [Travis Integration](#travis-integration)
  * [Creating an Editor](#creating-an-editor)
  * [Customizing the Editor](#customizing-the-editor)
 * [Editing Files](#editing-files)
@@ -12,7 +12,11 @@ This chapter shows you how to use Redaktilo and contains the following sections:
 * [Next readings](#next-readings)
 * [Previous readings](#previous-readings)
 
-## The Editor
+## Travis Integration
+
+"Encrypt token" has to be done for each repository, as the encrypted string is different.
+
+"Travis login" may not be necessary, so long as you add the repository inside Travis?
 
 The only class you'll be using when you use Redaktilo is the `Editor` class.
 This class contains all methods you need to navigate and edit texts (it can also
