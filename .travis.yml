@@ -1,0 +1,19 @@
+language: php
+
+php:
+- 7.0
+
+env:
+  matrix:
+  - "..."
+  global:
+  - GIT_NAME: "'Jerry auto deploy'"
+  - GIT_EMAIL: jerry@nonnon.com
+  - GH_REF: github.com/lianhub/try1
+  - secure: JFv4vhEvFVY9J12iI7k3eN/xFYTdTO2VhBWl9PCYYcxXcXHKtW5mXJcr5P7b1nWggAZWHErjadZLlUPP5Yn4tS+PT2Zc86jjgqMkH3zz0MvQ5l20XmoCRqSjGp/3+XzUnEknDiWCx3RVFGzkozuZj28r7CbHGvpklEvvDofTKLXDy5H6O8jZw5vm7VYvDbXrenfBRuigugmpsYjNzHuhDL9cy4kzfmrQ+oIbZVc6jkozbp25sy7j9yrJMS11PMfsFdVxlv+BYXvNuZzlUl8n3mmEnXK8GnP8py2RPWGNbrqi+WiRq8PnyCM9PKq0tb+IozNSm/tXZ4NnugY2GupYGGNwFkNhhUR1KyF/RGy4F5ZRcQbzG6Jsi+aYIBErDSZLsisT/PrBr+lcKSCZw/dOCD0XYfhsYS4giT76yvzl+I6BJRcE2SdtjeM2WwWIiotm1G3uBMqwuhQGmBRgyQoP6rDs4qeay0S5/IBaEFYZIeUX4lAQBnr+SBgXBSwf6sXcGHFfYlgLEHJnNtg60cgZxkzqmHdxACbhUShCi1cKkgH8cY3xelFg/2vtL9RtlHJZAroAhEcvNQ0JtDJQv7MW9b0SdV2LNCZHPa3zgpE4IgIYZiK3KMrf3nxHEI1gKapdGmMDPrtNgd0TTVBNlGE1zlQ0zzU4ryTVR+fNvw2ujbQ=
+
+before_script:
+- composer install --no-progress
+
+script:
+- php couscous.phar travis-auto-deploy --php-version=7.0
