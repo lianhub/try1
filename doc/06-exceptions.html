@@ -47,7 +47,7 @@
                                 </li>
                                                             <li class="">
                                     <a href="https://lianhub.github.io/try1/doc/02-use-cases.html">
-                                        EtherCAT
+                                        EtherCAT Master
                                     </a>
                                 </li>
                                                             <li class="">
@@ -67,7 +67,7 @@
                                 </li>
                                                             <li class="">
                                     <a href="https://lianhub.github.io/try1/doc/06-exceptions.html">
-                                        Exceptions
+                                        Misc
                                     </a>
                                 </li>
                                                     </ul>
@@ -76,23 +76,10 @@
 
                 
                 <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
-                    <h1 id="exceptions">Exceptions</h1>
-<p>All the exceptions thrown in Redaktilo live in the <code>Gnugat\Redaktilo\Exception</code>
-namespace and implement a common interface allowing you to catch any of them
-easily:</p>
-<pre><code class="language-php">&lt;?php
-
-try {
-
-    // any operations made with Redaktilo
-
-} catch (\Gnugat\Redaktilo\Exception\Exception $e) { ... }</code></pre>
-<p>Redaktilo's exceptions all have a descriptive message allowing developers to
-understand what went wrong. If the message is not enough, use their getter
-to get more context.</p>
+                    <h1 id="misc">Misc</h1>
 <p>Here's the list of the exceptions that can be thrown:</p>
 <ul>
-<li><a href="#commandnotfoundexception">CommandNotFoundException</a></li>
+<li><a href="#shrink-sd-card">Shrink SD Card</a></li>
 <li><a href="#notsupportedexception">NotSupportedException</a></li>
 <li><a href="#patternnotfoundexception">PatternNotFoundException</a></li>
 <li><a href="#invalidlinenumberexception">InvalidLineNumberException</a></li>
@@ -101,16 +88,13 @@ to get more context.</p>
 <li><a href="#ioexception">IOException</a></li>
 <li><a href="#invalidargumentexception">InvalidArgumentException</a></li>
 </ul>
-<h2 id="commandnotfoundexception">CommandNotFoundException</h2>
-<pre><code class="language-php">&lt;?php
-
-namespace Gnugat\Redaktilo\Exception;
-
-class CommandNotFoundException extends \Exception implements Exception
-{
-    public function getName();
-    public function getCommands();
-}</code></pre>
+<h2 id="shrink-sd-card">Shrink SD Card</h2>
+<p>Please to links:</p>
+<ul>
+<li><a href="https://www.htpcguides.com/easy-resize-and-back-up-raspberry-pi-sd-card-with-ubuntu/">Easy Resize and Back up Raspberry Pi SD Card with Ubuntu</a></li>
+<li><a href="https://www.htpcguides.com/how-to-use-sd-card-reader-in-vmplayer-and-vmworkstation/">How to Use SD Card Reader in VMPlayer and VMWorkstation</a></li>
+<li><a href="https://askubuntu.com/questions/591664/files-missing-in-mnt-hgfs-on-ubuntu-vm">Files missing in /mnt/hgfs on Ubuntu VM?</a></li>
+</ul>
 <h2 id="notsupportedexception">NotSupportedException</h2>
 <pre><code class="language-php">&lt;?php
 
