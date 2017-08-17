@@ -77,25 +77,28 @@
                 
                 <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
                     <h1 id="igh-ethercat-master">IgH EtherCAT Master</h1>
-<p>Redaktilo has been created to meet some actual needs, which is why its
-Test Suite contains an Example section.</p>
-<p>Let's discover the use cases which led to the creation of Redaktilo:</p>
+<p>This page instructs how to set up IgH EtherCAT master on raspberry PI-3.</p>
+<p>Please follow the steps below:</p>
 <ul>
 <li><a href="#setup-rt-preempt">Setup RT-Preempt</a>
 <ul>
 <li><a href="#download">Download</a></li>
-<li>Patch</li>
-<li>Prevent freezing</li>
+<li><a href="#patch">Patch</a></li>
+<li><a href="#prevent-freezing">Prevent freezing</a></li>
 </ul></li>
-<li><a href="#build-ethercat">Build EtherCAT</a></li>
-<li><a href="#php-source-code-edition">PHP source code edition</a></li>
+<li><a href="#build-ethercat">Build EtherCAT</a>
+<ul>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#copy">Copy</a></li>
+</ul></li>
+<li><a href="#install-machinekit">Install Machinekit</a></li>
+<li><a href="#install-linuxcnc-ethercat">Install Linuxcnc-Ethercat</a></li>
 <li><a href="#next-readings">Next readings</a></li>
 <li><a href="#previous-readings">Previous readings</a></li>
 </ul>
 <h2 id="setup-rt-preempt">Setup RT-Preempt</h2>
 <p>Many projects use the YAML format in their configuration files.</p>
 <h3 id="download">Download</h3>
-<h3 id="download-1">Download</h3>
 <p>Release date: 2017-08-16</p>
 <p>Kernel version: 4.9</p>
 <p>uname-a: Linux raspberrypi 4.9.41-v7+ #1023 SMP Tue Aug 8 16:00:15 BST 2017 armv7l GNU/Linux</p>
@@ -110,25 +113,17 @@ Test Suite contains an Example section.</p>
 <p>Add this: <code>dwc_otg.fiq_fsm_enable=0 dwc_otg.fiq_enable=0 dwc_otg.nak_holdoff=0</code></p>
 <p>It appears that what did the trick has been the order of the fiq disable commands. dwc_otg.fiq_fsm_enable=0 must be set <em>before</em> dwc_otg.fiq_enable=0. The other way around it finds fiq_fsm_enable true with fiq_enable false, and it forces fiq_enable true.</p>
 <h2 id="build-ethercat">Build EtherCAT</h2>
+<p>Redaktilo is again a good candidate.</p>
+<h3 id="configuration">Configuration</h3>
 <p>Some projects use JSON files (like <a href="https://getcomposer.org/">Composer</a>).</p>
+<h3 id="copy">Copy</h3>
 <p>Just like with Symfony2 YAML component, you could use <code>json_encode</code> and
 <code>json_decode</code> to edit these files, but you would lose empty lines and custom
 indentation.</p>
+<h2 id="install-machinekit">Install Machinekit</h2>
 <p>Redaktilo is again a good candidate.</p>
-<h2 id="php-source-code-edition">PHP source code edition</h2>
-<p><a href="https://github.com/gnugat/GnugatWizardBundle">GnugatWizardBundle</a> automatically
-registers bundle installed using composer in a Symfony2 application.</p>
-<p>To do so, it edits the <code>app/AppKernel.php</code> file using
-<a href="https://github.com/sensiolabs/SensioGeneratorBundle">SensioGeneratorBundle</a>'s
-<a href="https://github.com/sensiolabs/SensioGeneratorBundle/blob/8b7a33aa3d22388443b6de0b0cf184122e9f60d2/Manipulator/KernelManipulator.php">KernelManipulator</a>.</p>
-<p>This class is a little over engineered as it parses PHP tokens, and doesn't
-allow to register bundle for a special environment, meaning that
-GnugatWizardBundle will need to create its own KernelManipulator.</p>
-<p>The result of a simpler approach (parsing lines instead of PHP tokens) is
-Redaktilo!</p>
-<blockquote>
-<p><strong>Note</strong>: see <code>BundleRegistrationTest</code> for an actual implementation.</p>
-</blockquote>
+<h2 id="install-linuxcnc-ethercat">Install Linuxcnc-Ethercat</h2>
+<p>Redaktilo is again a good candidate.</p>
 <h2 id="next-readings">Next readings</h2>
 <ul>
 <li><a href="03-reference.html">Reference</a></li>
