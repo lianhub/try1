@@ -101,7 +101,8 @@
 <h3 id="download">Download</h3>
 <p>Release date: 2017-08-16</p>
 <p>Kernel version: 4.9</p>
-<p>uname-a: Linux raspberrypi 4.9.41-v7+ #1023 SMP Tue Aug 8 16:00:15 BST 2017 armv7l GNU/Linux</p>
+<p>uname-a: Linux raspberrypi 4.9.41-v7+ #1023 SMP Tue Aug 8 16:00:15 BST 2017 armv7l GNU/Linux
+uname-a: Linux raspberrypi 4.9.43-rt30-v7+ #1 SMP PREEMPT RT Thu Aug 17 12:23:30 EDT 2017 armv7l GNU/Linux</p>
 <h3 id="patch">Patch</h3>
 <p>Follow these instructions in file &quot;Machinekit-RT-Preempt-RPI.md&quot; at: <a href="https://github.com/koppi/mk">Get a basic Machinekit / EtherCAT system on the Raspberry PI 3 Model B</a></p>
 <p>Patch: patch-4.9.40-rt30.patch.gz</p>
@@ -113,7 +114,9 @@
 <p>Add this: <code>dwc_otg.fiq_fsm_enable=0 dwc_otg.fiq_enable=0 dwc_otg.nak_holdoff=0</code></p>
 <p>It appears that what did the trick has been the order of the fiq disable commands. dwc_otg.fiq_fsm_enable=0 must be set <em>before</em> dwc_otg.fiq_enable=0. The other way around it finds fiq_fsm_enable true with fiq_enable false, and it forces fiq_enable true.</p>
 <h2 id="build-ethercat">Build EtherCAT</h2>
-<p>Redaktilo is again a good candidate.</p>
+<blockquote>
+<p><strong>Note</strong>: be sure that you keep the /opt/linux folder: --with-linux-dir.</p>
+</blockquote>
 <h3 id="configuration">Configuration</h3>
 <p>Some projects use JSON files (like <a href="https://getcomposer.org/">Composer</a>).</p>
 <h3 id="copy">Copy</h3>
