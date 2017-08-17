@@ -98,13 +98,17 @@ Test Suite contains an Example section.</p>
 <p>Release date: 2017-08-16</p>
 <p>Kernel version: 4.9</p>
 <p>uname-a: Linux raspberrypi 4.9.41-v7+ #1023 SMP Tue Aug 8 16:00:15 BST 2017 armv7l GNU/Linux</p>
+<h3 id="download-1">Download</h3>
 <h3 id="patch">Patch</h3>
-<p>Follow these instructions to <a href="https://github.com/koppi/mk/blob/master/machinekit-rt-preempt-rpi.html">Get a basic Machinekit / EtherCAT system on the Raspberry PI 3 Model B</a></p>
+<p>Follow these instructions in file &quot;Machinekit-RT-Preempt-RPI.md&quot; at: <a href="https://github.com/koppi/mk">Get a basic Machinekit / EtherCAT system on the Raspberry PI 3 Model B</a></p>
 <p>Patch: patch-4.9.40-rt30.patch.gz</p>
 <blockquote>
 <p><strong>Note</strong>: see <code>BundleRoutingTest</code> for an actual implementation.</p>
 </blockquote>
-<h3 id="download-1">Download</h3>
+<h3 id="prevent-freezing">Prevent freezing</h3>
+<p>Follow these instructions modify cmdline.txt: <a href="https://www.raspberrypi.org/forums/viewtopic.php?f=29&amp;t=159170">Freezing with RT-patch (Pi 3)</a></p>
+<p>Add this: dwc_otg.fiq_fsm_enable=0 dwc_otg.fiq_enable=0 dwc_otg.nak_holdoff=0</p>
+<p>It appears that what did the trick has been the order of the fiq disable commands. dwc_otg.fiq_fsm_enable=0 must be set <em>before</em> dwc_otg.fiq_enable=0. The other way around it finds fiq_fsm_enable true with fiq_enable false, and it forces fiq_enable true.</p>
 <h2 id="build-ethercat">Build EtherCAT</h2>
 <p>Some projects use JSON files (like <a href="https://getcomposer.org/">Composer</a>).</p>
 <p>Just like with Symfony2 YAML component, you could use <code>json_encode</code> and
