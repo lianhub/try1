@@ -18,7 +18,7 @@
             <a class="navbar-brand" href="https://lianhub.github.io/try1/">
                 My personal website
                 <small class="hidden-xs hidden-sm">
-                    An easy &quot;line manipulation&quot; PHP lib - jump, insert and do anything!
+                    documentations for myself!
                 </small>
             </a>
 
@@ -77,8 +77,7 @@
                 
                 <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
                     <h1 id="my-personal-website">My Personal website</h1>
-<p>Redaktilo allows you to find, insert, replace and remove lines using an
-editor-like object.</p>
+<p>This website includes documentations for my projects.</p>
 <p><em>Because your code too needs an editor to manipulate files</em>.</p>
 <p><a href="https://insight.sensiolabs.com/projects/fbe2d89f-f64d-45c2-a680-bbafac4b0d08"><img src="https://insight.sensiolabs.com/projects/fbe2d89f-f64d-45c2-a680-bbafac4b0d08/mini.png" alt="SensioLabsInsight" /></a>
 <a href="https://travis-ci.org/gnugat/redaktilo"><img src="https://travis-ci.org/gnugat/redaktilo.png" alt="Travis CI" /></a></p>
@@ -93,46 +92,6 @@ require_once __DIR__.'/vendor/autoload.php';
 use Gnugat\Redaktilo\EditorFactory;
 
 $editor = EditorFactory::createEditor();</code></pre>
-<h2 id="real-life-example">Real life example</h2>
-<p>For our example, we will create a <a href="https://github.com/sensiolabs/SensioGeneratorBundle/blob/8b7a33aa3d22388443b6de0b0cf184122e9f60d2/Manipulator/KernelManipulator.php"><code>KernelManipulator</code></a>
-similar to the one we can find in <a href="https://github.com/sensiolabs/SensioGeneratorBundle">SensioGeneratorBundle</a>.</p>
-<p>It takes a bundle's fully qualified classname and inserts it in the <code>AppKernel</code>
-file:</p>
-<pre><code class="language-php">&lt;?php
-
-namespace Sensio\Bundle\GeneratorBundle\Manipulator;
-
-use Gnugat\Redaktilo\Editor;
-
-class KernelManipulator extends Manipulator
-{
-    protected $editor;
-    protected $appKernelFilename;
-
-    public function __construct(Editor $editor, $appKernelFilename)
-    {
-        $this-&gt;editor = $editor;
-        $this-&gt;appKernelFilename = $appKernelFilename;
-    }
-
-    public function addBundle($bundle)
-    {
-        $appKernel = $this-&gt;editor-&gt;open($this-&gt;appKernelFilename);
-        $newBundle = "            new $bundle(),";
-        if ($this-&gt;editor-&gt;hasBelow($appKernel, $newBundle)) {
-            $message = sprintf('Bundle "%s" is already defined in "AppKernel::registerBundles()".', $bundle);
-
-            throw new \RuntimeException($message);
-        }
-        $this-&gt;editor-&gt;jumpBelow($appKernel, '        );');
-        $this-&gt;editor-&gt;insertAbove($appKernel, $newBundle);
-        $this-&gt;editor-&gt;save($appKernel);
-
-        return true;
-    }
-}</code></pre>
-<p>As you can see it's easier to read and to understand than
-<a href="https://github.com/sensiolabs/SensioGeneratorBundle/blob/8b7a33aa3d22388443b6de0b0cf184122e9f60d2/Manipulator/KernelManipulator.php">the original PHP token parsing</a>.</p>
 <h2 id="further-documentation">Further documentation</h2>
 <p>You can see the current and past versions using one of the following:</p>
 <ul>

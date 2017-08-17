@@ -18,7 +18,7 @@
             <a class="navbar-brand" href="https://lianhub.github.io/try1/">
                 My personal website
                 <small class="hidden-xs hidden-sm">
-                    An easy &quot;line manipulation&quot; PHP lib - jump, insert and do anything!
+                    documentations for myself!
                 </small>
             </a>
 
@@ -81,13 +81,18 @@
 Test Suite contains an Example section.</p>
 <p>Let's discover the use cases which led to the creation of Redaktilo:</p>
 <ul>
-<li><a href="#yaml-configuration-edition">YAML configuration edition</a></li>
-<li><a href="#json-file-edition">JSON file edition</a></li>
+<li><a href="#setup-rt-preempt">Setup RT-Preempt</a>
+<ul>
+<li>Download</li>
+<li>Patch</li>
+<li>Prevnt freezing</li>
+</ul></li>
+<li><a href="#build-ethercat">Build EtherCAT</a></li>
 <li><a href="#php-source-code-edition">PHP source code edition</a></li>
 <li><a href="#next-readings">Next readings</a></li>
 <li><a href="#previous-readings">Previous readings</a></li>
 </ul>
-<h2 id="yaml-configuration-edition">YAML configuration edition</h2>
+<h2 id="setup-rt-preempt">Setup RT-Preempt</h2>
 <p>Many projects use the YAML format in their configuration files.</p>
 <p>If you need to add a new parameter, you could use the
 <a href="http://symfony.com/doc/current/components/yaml/index.html">Symfony2 YAML component</a>,
@@ -98,7 +103,7 @@ vis-versa.</p>
 <blockquote>
 <p><strong>Note</strong>: see <code>BundleRoutingTest</code> for an actual implementation.</p>
 </blockquote>
-<h2 id="json-file-edition">JSON file edition</h2>
+<h2 id="build-ethercat">Build EtherCAT</h2>
 <p>Some projects use JSON files (like <a href="https://getcomposer.org/">Composer</a>).</p>
 <p>Just like with Symfony2 YAML component, you could use <code>json_encode</code> and
 <code>json_decode</code> to edit these files, but you would lose empty lines and custom
