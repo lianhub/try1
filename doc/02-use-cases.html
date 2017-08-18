@@ -136,7 +136,7 @@
 <li>modprobe/depmod?</li>
 </ul>
 <h2 id="install-machinekit">Install Machinekit</h2>
-<p>and Machinekit-dev package, rt-preempt?</p>
+<p>Install packages: machinekit, machinekit-dev, machinekit-rt-preempt!</p>
 <ul>
 <li>sudo dpkg -i *.deb</li>
 <li>sudo apt install gdebi</li>
@@ -146,8 +146,10 @@
 <h2 id="install-linuxcnc-ethercat">Install Linuxcnc-Ethercat</h2>
 <p>Copy to appropriate folders: lcec.so, lcec_conf, libethercat.so</p>
 <ul>
+<li>make</li>
+<li>sudo make install</li>
 <li>/usr/bin/lcec_conf</li>
-<li>/usr/lib/linuxcnc/posix/lcec.so /usr/lib/linuxcnc/rt-preempt/lcec.so</li>
+<li>sudo cp /usr/lib/linuxcnc/posix/lcec.so /usr/lib/linuxcnc/rt-preempt/lcec.so</li>
 <li>sudo cp /opt/etherlab/include/ecrt.h /usr/include/linuxcnc/</li>
 <li>sudo cp /opt/etherlab/lib/libethercat.so.1 /usr/lib/linuxcnc/rt-preempt/</li>
 <li>sudo cp /opt/etherlab/lib/libethercat.so /usr/lib/linuxcnc/rt-preempt/</li>
