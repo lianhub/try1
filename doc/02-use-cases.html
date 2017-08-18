@@ -128,8 +128,9 @@
 <p><strong>Note</strong>: be sure that you keep the /opt/linux folder: --with-linux-dir.</p>
 </blockquote>
 <h3 id="configuration">Configuration</h3>
-<p>Edit etc/sysconfig/ethercat:</p>
+<p>Copy folder to: etc/sysconfig/, and edit file <code>ethercat</code>:</p>
 <ul>
+<li>sudo cp -r /opt/etherlab/etc/sysconfig /etc/</li>
 <li>MAC address,</li>
 <li>&quot;generic&quot;,</li>
 <li>modprobe/depmod?</li>
@@ -139,8 +140,13 @@
 <code>json_decode</code> to edit these files, but you would lose empty lines and custom
 indentation.</p>
 <h2 id="install-machinekit">Install Machinekit</h2>
-<p>and Machinekit-dev package, rt-preempt?
-dpkg-repack; gdebi; dpkg -i *.deb;</p>
+<p>and Machinekit-dev package, rt-preempt?</p>
+<ul>
+<li>sudo dpkg -i *.deb</li>
+<li>sudo apt install gdebi</li>
+<li>sudo apt --fix-broken install</li>
+<li>dpkg-repack</li>
+</ul>
 <h2 id="install-linuxcnc-ethercat">Install Linuxcnc-Ethercat</h2>
 <p>Copy to appropriate folders: lcec.so, lcec_conf, libethercat.so</p>
 <ul>
