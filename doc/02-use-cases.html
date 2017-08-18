@@ -118,15 +118,21 @@ uname-a: Linux raspberrypi 4.9.43-rt30-v7+ #1 SMP PREEMPT RT Thu Aug 17 12:23:30
 <p><strong>Note</strong>: be sure that you keep the /opt/linux folder: --with-linux-dir.</p>
 </blockquote>
 <h3 id="configuration">Configuration</h3>
-<p>Some projects use JSON files (like <a href="https://getcomposer.org/">Composer</a>).</p>
+<p>Edit etc/sysconfig/ethercat: MAC address, &quot;generic&quot;, modprobe/depmod?</p>
 <h3 id="copy">Copy</h3>
 <p>Just like with Symfony2 YAML component, you could use <code>json_encode</code> and
 <code>json_decode</code> to edit these files, but you would lose empty lines and custom
 indentation.</p>
 <h2 id="install-machinekit">Install Machinekit</h2>
-<p>Redaktilo is again a good candidate.</p>
+<p>and Machinekit-dev package, rt-preempt?
+dpkg-repack; gdebi; dpkg -i *.deb;</p>
 <h2 id="install-linuxcnc-ethercat">Install Linuxcnc-Ethercat</h2>
-<p>Redaktilo is again a good candidate.</p>
+<p>Copy to appropriate folders: lcec.so, lcec_conf, libethercat.so
+/usr/bin/lcec_conf
+/usr/lib/linuxcnc/rt-preempt/lcec.so
+sudo cp /opt/etherlab/include/ecrt.h /usr/include/linuxcnc/
+sudo cp /opt/etherlab/lib/libethercat.so.1 /usr/lib/linuxcnc/rt-preempt/
+sudo cp /opt/etherlab/lib/libethercat.so /usr/lib/linuxcnc/rt-preempt/</p>
 <h2 id="next-readings">Next readings</h2>
 <ul>
 <li><a href="03-reference.html">Reference</a></li>
