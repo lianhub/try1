@@ -120,11 +120,20 @@
 </ul>
 <p>It appears that what did the trick has been the order of the fiq disable commands. dwc_otg.fiq_fsm_enable=0 must be set <em>before</em> dwc_otg.fiq_enable=0. The other way around it finds fiq_fsm_enable true with fiq_enable false, and it forces fiq_enable true.</p>
 <h2 id="build-ethercat">Build EtherCAT</h2>
+<ul>
+<li>sudo apt install autoconf libtool</li>
+<li>./configure --enable-generic --disable-8139too</li>
+</ul>
 <blockquote>
 <p><strong>Note</strong>: be sure that you keep the /opt/linux folder: --with-linux-dir.</p>
 </blockquote>
 <h3 id="configuration">Configuration</h3>
-<p>Edit etc/sysconfig/ethercat: MAC address, &quot;generic&quot;, modprobe/depmod?</p>
+<p>Edit etc/sysconfig/ethercat:</p>
+<ul>
+<li>MAC address,</li>
+<li>&quot;generic&quot;,</li>
+<li>modprobe/depmod?</li>
+</ul>
 <h3 id="copy">Copy</h3>
 <p>Just like with Symfony2 YAML component, you could use <code>json_encode</code> and
 <code>json_decode</code> to edit these files, but you would lose empty lines and custom
