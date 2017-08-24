@@ -81,9 +81,9 @@
 
                 
                 <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
-                    <h1 id="redaktilo-extension-points">Redaktilo Extension Points</h1>
+                    <h1 id="twincat-operations">TwinCAT operations</h1>
 <ul>
-<li><a href="#search">Search</a>
+<li><a href="#twincat-safety">TwinCAT Safety</a>
 <ul>
 <li><a href="#searchstrategy-api">SearchStrategy API</a></li>
 </ul></li>
@@ -93,20 +93,15 @@
 <li><a href="#input-sanitizers">Input Sanitizers</a></li>
 </ul></li>
 </ul>
-<h2 id="search">Search</h2>
+<h2 id="twincat-safety">TwinCAT Safety</h2>
 <p>Use the <code>EditorBuilder</code> in order to register custom <code>SearchStrategy</code>
 implementations:</p>
-<pre><code class="language-php">&lt;?php
-require_once __DIR__.'/vendor/autoload.php';
-
-use Gnugat\Redaktilo\EditorFactory;
-
-$strategy = new MyCustomStrategy();
-
-$builder = EditorFactory::createBuilder();
-$builder-&gt;addSearchStrategy($strategy);
-
-$editor = $builder-&gt;getEditor();</code></pre>
+<ul>
+<li>TwinSAFE Function block</li>
+<li>TwinSAFE Group: Input/Outputs</li>
+<li>TwinSAFE Connetion: Term(EL1904/EL2904), check <code>Map Inputs</code> and <code>Map Outputs</code></li>
+<li>AX5206: Process Data -&gt; PDO Content -&gt; Inert variables</li>
+</ul>
 <p>The strategy will then be automatically used (if it's the first to support the
 given pattern) when calling one of the following <code>Editor</code> method:</p>
 <ul>
