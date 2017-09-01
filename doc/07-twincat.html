@@ -87,10 +87,10 @@
 <ul>
 <li><a href="#searchstrategy-api">SearchStrategy API</a></li>
 </ul></li>
-<li><a href="#commands">Commands</a>
+<li><a href="#twincat-motion">TwinCAT Motion</a>
 <ul>
-<li><a href="#command-api">Command API</a></li>
-<li><a href="#input-sanitizers">Input Sanitizers</a></li>
+<li><a href="#set-nc-parameters">Set NC Parameters</a></li>
+<li><a href="#jogging">Jogging</a></li>
 </ul></li>
 </ul>
 <h2 id="twincat-safety">TwinCAT Safety</h2>
@@ -100,15 +100,7 @@ implementations:</p>
 <li>TwinSAFE Function block</li>
 <li>TwinSAFE Group: Input/Outputs</li>
 <li>TwinSAFE Connetion: Term(EL1904/EL2904), check <code>Map Inputs</code> and <code>Map Outputs</code></li>
-<li>AX5206: Process Data -&gt; PDO Content -&gt; Inert variables</li>
-</ul>
-<p>The strategy will then be automatically used (if it's the first to support the
-given pattern) when calling one of the following <code>Editor</code> method:</p>
-<ul>
-<li><code>jumpAbove</code></li>
-<li><code>jumpBelow</code></li>
-<li><code>hasAbove</code></li>
-<li><code>hasBelow</code></li>
+<li>AX5206: Process Data -&gt; PDO Content -&gt; Insert variables</li>
 </ul>
 <p>If your strategy should be used instead of another already registered strategy
 (ie. they support the same pattern), you can give it a higher priority:</p>
@@ -120,51 +112,18 @@ returned if it supports the given pattern.</p>
 it.</p>
 </blockquote>
 <h3 id="searchstrategy-api">SearchStrategy API</h3>
-<p>A lookup strategy supporting a specific kind of pattern:</p>
-<pre><code class="language-php">&lt;?php
-
-namespace Gnugat\Redaktilo\Search;
-
-use Gnugat\Redaktilo\Text;
-
-interface SearchStrategy
-{
-    public function findAbove(Text $text, $pattern, $location = null);
-    public function findBelow(Text $text, $pattern, $location = null);
-
-    public function supports($pattern);
-}</code></pre>
 <p>Implementations provided out of the box are:</p>
 <ul>
 <li><code>LineRegexSearchStrategy</code>: regular expression search, supports regex (<code>/pattern/</code>)</li>
 <li><code>SameSearchStrategy</code>: strict equality search (<code>===</code>), supports strings</li>
 </ul>
-<h2 id="commands">Commands</h2>
-<p>Use the <code>EditorBuilder</code> in order to register custom <code>Command</code> implementations:</p>
-<pre><code class="language-php">&lt;?php
-require_once __DIR__.'/vendor/autoload.php';
-
-use Gnugat\Redaktilo\EditorFactory;
-
-$command = new DoSomethingCommand();
-
-$builder = EditorFactory::createBuilder();
-$builder-&gt;addCommand($command);
-$commandInvoker = $builder-&gt;getCommandInvoker();
-$editor = $builder-&gt;getEditor();
-$file = $editor-&gt;open('/tmp/menu_spam.txt', true);
-
-$editor-&gt;run('do_something', array('text' =&gt; $file));</code></pre>
+<h2 id="twincat-motion">TwinCAT Motion</h2>
 <p><code>Editor</code> actually uses the <code>CommandInvoker</code> in its following methods:</p>
 <ul>
 <li><code>insertAbove</code></li>
 <li><code>insertBelow</code></li>
-<li><code>remove</code></li>
-<li><code>replace</code></li>
-<li><code>replaceAll</code></li>
-<li><code>run</code></li>
 </ul>
-<h3 id="command-api">Command API</h3>
+<h3 id="set-nc-parameters">Set NC Parameters</h3>
 <p>Executes a task with the given input:</p>
 <pre><code class="language-php">&lt;?php
 
@@ -183,7 +142,7 @@ interface Command
 <li><code>LineReplaceCommand</code>: <code>text</code>, <code>replacement</code> and optional <code>location</code> (name: <code>replace</code>)</li>
 <li><code>LineReplaceAllCommand</code>: <code>text</code>, <code>pattern</code> and <code>replacement</code> (name: <code>replace_all</code>)</li>
 </ul>
-<h3 id="input-sanitizers">Input Sanitizers</h3>
+<h3 id="jogging">Jogging</h3>
 <p>In order to safely extract the parameters in the given input, commands can rely
 on input sanitizer:</p>
 <pre><code class="language-php">&lt;?php
