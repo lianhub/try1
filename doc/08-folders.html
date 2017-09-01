@@ -99,26 +99,14 @@
 </ul></li>
 </ul>
 <h2 id="search">Search</h2>
-<p>Use the <code>EditorBuilder</code> in order to register custom <code>SearchStrategy</code>
-implementations:</p>
-<pre><code class="language-php">&lt;?php
-require_once __DIR__.'/vendor/autoload.php';
-
-use Gnugat\Redaktilo\EditorFactory;
-
-$strategy = new MyCustomStrategy();
-
-$builder = EditorFactory::createBuilder();
-$builder-&gt;addSearchStrategy($strategy);
-
-$editor = $builder-&gt;getEditor();</code></pre>
 <p>The strategy will then be automatically used (if it's the first to support the
 given pattern) when calling one of the following <code>Editor</code> method:</p>
 <ul>
-<li><code>jumpAbove</code></li>
-<li><code>jumpBelow</code></li>
-<li><code>hasAbove</code></li>
-<li><code>hasBelow</code></li>
+<li><code>CDP-projects</code>:</li>
+<li><code>myGithub</code>:</li>
+<li><code>EAGLE-Tools</code>:</li>
+<li><code>git-space</code>:</li>
+<li><code>tools</code>:</li>
 </ul>
 <p>If your strategy should be used instead of another already registered strategy
 (ie. they support the same pattern), you can give it a higher priority:</p>
