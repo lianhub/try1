@@ -124,16 +124,6 @@ it.</p>
 <li><code>insertBelow</code></li>
 </ul>
 <h3 id="set-nc-parameters">Set NC Parameters</h3>
-<p>Executes a task with the given input:</p>
-<pre><code class="language-php">&lt;?php
-
-namespace Gnugat\Redaktilo\Command;
-
-interface Command
-{
-    public function getName();
-    public function execute(array $input);
-}</code></pre>
 <p>Implementations provided out of the box are:</p>
 <ul>
 <li><code>LineInsertAboveCommand</code>: <code>text</code>, <code>addition</code> and optional <code>location</code> (name: <code>insert_above</code>)</li>
@@ -143,16 +133,6 @@ interface Command
 <li><code>LineReplaceAllCommand</code>: <code>text</code>, <code>pattern</code> and <code>replacement</code> (name: <code>replace_all</code>)</li>
 </ul>
 <h3 id="jogging">Jogging</h3>
-<p>In order to safely extract the parameters in the given input, commands can rely
-on input sanitizer:</p>
-<pre><code class="language-php">&lt;?php
-
-namespace Gnugat\Redaktilo\Command\Sanitizer;
-
-interface InputSanitizer
-{
-    public function sanitize(array $input);
-}</code></pre>
 <p>Currently, here's the sanitizers provided out of the box:</p>
 <ul>
 <li><code>LocationSanitizer</code>: checks if the line number is valid
