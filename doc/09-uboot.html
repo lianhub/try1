@@ -91,7 +91,7 @@
 
                 
                 <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
-                    <h1 id="redaktilo-extension-points">Redaktilo Extension Points</h1>
+                    <h1 id="u-boot-on-beaglebone-black">U-Boot on Beaglebone Black</h1>
 <ul>
 <li><a href="#search">Search</a>
 <ul>
@@ -104,19 +104,6 @@
 </ul></li>
 </ul>
 <h2 id="search">Search</h2>
-<p>Use the <code>EditorBuilder</code> in order to register custom <code>SearchStrategy</code>
-implementations:</p>
-<pre><code class="language-php">&lt;?php
-require_once __DIR__.'/vendor/autoload.php';
-
-use Gnugat\Redaktilo\EditorFactory;
-
-$strategy = new MyCustomStrategy();
-
-$builder = EditorFactory::createBuilder();
-$builder-&gt;addSearchStrategy($strategy);
-
-$editor = $builder-&gt;getEditor();</code></pre>
 <p>The strategy will then be automatically used (if it's the first to support the
 given pattern) when calling one of the following <code>Editor</code> method:</p>
 <ul>
@@ -135,41 +122,12 @@ returned if it supports the given pattern.</p>
 it.</p>
 </blockquote>
 <h3 id="searchstrategy-api">SearchStrategy API</h3>
-<p>A lookup strategy supporting a specific kind of pattern:</p>
-<pre><code class="language-php">&lt;?php
-
-namespace Gnugat\Redaktilo\Search;
-
-use Gnugat\Redaktilo\Text;
-
-interface SearchStrategy
-{
-    public function findAbove(Text $text, $pattern, $location = null);
-    public function findBelow(Text $text, $pattern, $location = null);
-
-    public function supports($pattern);
-}</code></pre>
 <p>Implementations provided out of the box are:</p>
 <ul>
 <li><code>LineRegexSearchStrategy</code>: regular expression search, supports regex (<code>/pattern/</code>)</li>
 <li><code>SameSearchStrategy</code>: strict equality search (<code>===</code>), supports strings</li>
 </ul>
 <h2 id="commands">Commands</h2>
-<p>Use the <code>EditorBuilder</code> in order to register custom <code>Command</code> implementations:</p>
-<pre><code class="language-php">&lt;?php
-require_once __DIR__.'/vendor/autoload.php';
-
-use Gnugat\Redaktilo\EditorFactory;
-
-$command = new DoSomethingCommand();
-
-$builder = EditorFactory::createBuilder();
-$builder-&gt;addCommand($command);
-$commandInvoker = $builder-&gt;getCommandInvoker();
-$editor = $builder-&gt;getEditor();
-$file = $editor-&gt;open('/tmp/menu_spam.txt', true);
-
-$editor-&gt;run('do_something', array('text' =&gt; $file));</code></pre>
 <p><code>Editor</code> actually uses the <code>CommandInvoker</code> in its following methods:</p>
 <ul>
 <li><code>insertAbove</code></li>
@@ -180,16 +138,6 @@ $editor-&gt;run('do_something', array('text' =&gt; $file));</code></pre>
 <li><code>run</code></li>
 </ul>
 <h3 id="command-api">Command API</h3>
-<p>Executes a task with the given input:</p>
-<pre><code class="language-php">&lt;?php
-
-namespace Gnugat\Redaktilo\Command;
-
-interface Command
-{
-    public function getName();
-    public function execute(array $input);
-}</code></pre>
 <p>Implementations provided out of the box are:</p>
 <ul>
 <li><code>LineInsertAboveCommand</code>: <code>text</code>, <code>addition</code> and optional <code>location</code> (name: <code>insert_above</code>)</li>
@@ -199,16 +147,6 @@ interface Command
 <li><code>LineReplaceAllCommand</code>: <code>text</code>, <code>pattern</code> and <code>replacement</code> (name: <code>replace_all</code>)</li>
 </ul>
 <h3 id="input-sanitizers">Input Sanitizers</h3>
-<p>In order to safely extract the parameters in the given input, commands can rely
-on input sanitizer:</p>
-<pre><code class="language-php">&lt;?php
-
-namespace Gnugat\Redaktilo\Command\Sanitizer;
-
-interface InputSanitizer
-{
-    public function sanitize(array $input);
-}</code></pre>
 <p>Currently, here's the sanitizers provided out of the box:</p>
 <ul>
 <li><code>LocationSanitizer</code>: checks if the line number is valid
