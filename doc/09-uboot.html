@@ -97,7 +97,7 @@
 <ul>
 <li><a href="#searchstrategy-api">SearchStrategy API</a></li>
 </ul></li>
-<li><a href="#commands">Commands</a>
+<li><a href="#build-kernel">Build Kernel</a>
 <ul>
 <li><a href="#command-api">Command API</a></li>
 <li><a href="#input-sanitizers">Input Sanitizers</a></li>
@@ -109,6 +109,7 @@
 <li><a href="https://gist.github.com/eepp/6056325">Building U-Boot and Linux 3.11 from scratch for the BeagleBone, and booting</a></li>
 <li><a href="http://www.jumpnowtek.com/beaglebone/Beaglebone-Black-U-Boot-Notes.html">BeagleBone Black U-Boot</a></li>
 <li><a href="https://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black">U-Boot on BeagleBone Black</a></li>
+<li><a href="http://wiki.beyondlogic.org/index.php?title=BeagleBoneBlack_Upgrading_uBoot">U-Boot on the BeagleBone Black</a></li>
 </ul>
 <p>Steps:</p>
 <ul>
@@ -117,6 +118,8 @@
 <li><code>tar -xjvf u-boot-latest.tar.bz2</code></li>
 <li>Edit default SYS_PROMPT in file: /uboot/cmd/Kconfig</li>
 <li><code>make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am335x_boneblack_defconfig</code></li>
+<li><code>make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j4</code></li>
+<li>Install mkimage: <code>sudo apt install u-boot-tools</code></li>
 </ul>
 <p>If your strategy should be used instead of another already registered strategy
 (ie. they support the same pattern), you can give it a higher priority:</p>
@@ -133,15 +136,18 @@ it.</p>
 <li><code>LineRegexSearchStrategy</code>: regular expression search, supports regex (<code>/pattern/</code>)</li>
 <li><code>SameSearchStrategy</code>: strict equality search (<code>===</code>), supports strings</li>
 </ul>
-<h2 id="commands">Commands</h2>
+<h2 id="build-kernel">Build Kernel</h2>
 <p><code>Editor</code> actually uses the <code>CommandInvoker</code> in its following methods:</p>
 <ul>
-<li><code>insertAbove</code></li>
-<li><code>insertBelow</code></li>
-<li><code>remove</code></li>
-<li><code>replace</code></li>
-<li><code>replaceAll</code></li>
-<li><code>run</code></li>
+<li><a href="https://gist.github.com/eepp/6056325">Building U-Boot and Linux 3.11 from scratch for the BeagleBone, and booting</a></li>
+<li><a href="http://wiki.beyondlogic.org/index.php/BeagleBoneBlack_Building_Kernel">Compiling the BeagleBone Black Kernel</a></li>
+</ul>
+<p>Steps:</p>
+<ul>
+<li><code>git clone -b 4.9 git://github.com/beagleboard/linux.git</code></li>
+<li><code>make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bb.org_defconfig</code></li>
+<li><code>make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- -j4</code></li>
+<li><code>make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- uImage dtbs LOADADDR=0x80008000 -j4</code></li>
 </ul>
 <h3 id="command-api">Command API</h3>
 <p>Implementations provided out of the box are:</p>
