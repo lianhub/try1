@@ -93,7 +93,7 @@
                 <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
                     <h1 id="u-boot-on-beaglebone-black">U-Boot on Beaglebone Black</h1>
 <ul>
-<li><a href="#search">Search</a>
+<li><a href="#build-u-boot">Build U-Boot</a>
 <ul>
 <li><a href="#searchstrategy-api">SearchStrategy API</a></li>
 </ul></li>
@@ -103,14 +103,20 @@
 <li><a href="#input-sanitizers">Input Sanitizers</a></li>
 </ul></li>
 </ul>
-<h2 id="search">Search</h2>
-<p>The strategy will then be automatically used (if it's the first to support the
-given pattern) when calling one of the following <code>Editor</code> method:</p>
+<h2 id="build-u-boot">Build U-Boot</h2>
+<p>Consult the following links:</p>
 <ul>
-<li><code>jumpAbove</code></li>
-<li><code>jumpBelow</code></li>
-<li><code>hasAbove</code></li>
-<li><code>hasBelow</code></li>
+<li><a href="https://gist.github.com/eepp/6056325">Building U-Boot and Linux 3.11 from scratch for the BeagleBone, and booting</a></li>
+<li><a href="http://www.jumpnowtek.com/beaglebone/Beaglebone-Black-U-Boot-Notes.html">BeagleBone Black U-Boot</a></li>
+<li><a href="https://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black">U-Boot on BeagleBone Black</a></li>
+</ul>
+<p>Steps:</p>
+<ul>
+<li><code>sudo apt-get install gcc-arm-linux-gnueabihf</code></li>
+<li><code>wget ftp://ftp.denx.de/pub/u-boot/u-boot-latest.tar.bz2</code></li>
+<li><code>tar -xjvf u-boot-latest.tar.bz2</code></li>
+<li>Edit default SYS_PROMPT in file: /uboot/cmd/Kconfig</li>
+<li><code>make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am335x_boneblack_defconfig</code></li>
 </ul>
 <p>If your strategy should be used instead of another already registered strategy
 (ie. they support the same pattern), you can give it a higher priority:</p>
