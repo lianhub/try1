@@ -97,7 +97,7 @@
 <li><a href="#build-kernel">Build Kernel</a></li>
 <li><a href="#create-root-filesystem">Create Root Filesystem</a></li>
 <li><a href="#create-sd-card">Create SD Card</a></li>
-<li><a href="#screen-uart">Screen UART</a></li>
+<li><a href="#access-to-bbb-serial-console">Access to BBB Serial Console</a></li>
 <li><a href="#boot">Boot</a></li>
 </ul>
 <h2 id="build-u-boot">Build U-Boot</h2>
@@ -142,11 +142,40 @@ it.</p>
 <li><code>make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- uImage dtbs LOADADDR=0x80008000 -j4</code></li>
 </ul>
 <h2 id="create-root-filesystem">Create Root Filesystem</h2>
-<p><code>Editor</code> actually uses the <code>CommandInvoker</code> in its following methods:</p>
+<ul>
+<li>mkdir bin dev proc sys</li>
+<li>wget <a href="http://www.busybox.net/downloads/binaries/1.21.1/busybox-armv7l">http://www.busybox.net/downloads/binaries/1.21.1/busybox-armv7l</a> -O bin/busybox</li>
+<li>chmod +x bin/busybox</li>
+</ul>
 <h2 id="create-sd-card">Create SD Card</h2>
-<p><code>Editor</code> actually uses the <code>CommandInvoker</code> in its following methods:</p>
-<h2 id="screen-uart">Screen UART</h2>
-<p><code>Editor</code> actually uses the <code>CommandInvoker</code> in its following methods:</p>
+<ul>
+<li>sudo fdisk /dev/sdb: d w</li>
+<li>mkfs.vfat -F16 -v /dev/sdb1</li>
+<li>mkfs.ext4 /dev/sdb2</li>
+<li>mount /dev/sdb1 /mnt/bbone_sd1</li>
+<li>cp /path/to/MLO .</li>
+<li>umount bbone_sd1</li>
+</ul>
+<h2 id="access-to-bbb-serial-console">Access to BBB Serial Console</h2>
+<p>Following link:</p>
+<ul>
+<li><a href="https://dave.cheney.net/2013/09/22/two-point-five-ways-to-access-the-serial-console-on-your-beaglebone-black">Two point five ways to access the serial console on your Beaglebone Black</a></li>
+</ul>
+<p>FTDI USB-Serial Converter &lt;=&gt; BBB J1 header:</p>
+<ul>
+<li>J1 pin 2: VSS</li>
+<li>J1 pin 3: RES</li>
+<li>J1 pin 4: TX</li>
+<li>J1 pin 5: RX</li>
+</ul>
+<p>Connect to BBB:</p>
+<ul>
+<li>sudo screen /dev/ttyUSB0 115200,cs8</li>
+</ul>
+<h2 id="boot">Boot</h2>
+<ul>
+<li>setenv bootargs &quot;earlyprintk console=ttyO0,115200n8 root=/dev/mmcblk0p2 rootwait ro rootfstype=ext4 init=/bin/init&quot;</li>
+</ul>
 <h2 id="next-readings">Next readings</h2>
 <ul>
 <li><a href="06-exceptions.html">Exceptions</a></li>
