@@ -111,6 +111,7 @@
 <p>Steps:</p>
 <ul>
 <li><code>sudo apt-get install gcc-arm-linux-gnueabihf</code></li>
+<li><code>sudo apt install device-tree-compiler</code></li>
 <li><code>wget ftp://ftp.denx.de/pub/u-boot/u-boot-latest.tar.bz2</code></li>
 <li><code>tar -xjvf u-boot-latest.tar.bz2</code></li>
 <li>Edit default SYS_PROMPT in file: /uboot/cmd/Kconfig</li>
@@ -170,6 +171,7 @@ it.</p>
 </ul>
 <p>Connect to BBB:</p>
 <ul>
+<li>check tty assignment: dmesg</li>
 <li>sudo screen /dev/ttyUSB0 115200,cs8</li>
 </ul>
 <h2 id="boot">Boot</h2>
