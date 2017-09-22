@@ -108,7 +108,7 @@
 </ul></li>
 <li><a href="#install-machinekit">Install Machinekit</a></li>
 <li><a href="#install-linuxcnc-ethercat">Install Linuxcnc-Ethercat</a></li>
-<li><a href="#next-readings">Next readings</a></li>
+<li><a href="#beaglebone-issue">Beaglebone Issue</a></li>
 <li><a href="#previous-readings">Previous readings</a></li>
 </ul>
 <h2 id="setup-rt-preempt">Setup RT-Preempt</h2>
@@ -169,13 +169,12 @@
 <li>sudo cp /opt/etherlab/lib/libethercat.so.1 /usr/lib/linuxcnc/rt-preempt/</li>
 <li>sudo cp /opt/etherlab/lib/libethercat.so /usr/lib/linuxcnc/rt-preempt/</li>
 </ul>
-<h2 id="next-readings">Next readings</h2>
-<ul>
-<li><a href="03-reference.html">Reference</a></li>
-<li><a href="04-vocabulary.html">Vocabulary</a></li>
-<li><a href="05-extending.html">Extending</a></li>
-<li><a href="06-exceptions.html">Exceptions</a></li>
-</ul>
+<h2 id="beaglebone-issue">Beaglebone Issue</h2>
+<p>As stated in video <a href="https://www.youtube.com/watch?v=M1LxQBjttWg">Machinekit + EtherCAT on BeagleBone Black </a>:</p>
+<blockquote>
+<p><strong>Note</strong>: The external NIC is used due to the need of preservation of the on board NIC
+for LAN operation and the fact that the SoC has an integrated switch, wich affected real &gt; time capability.</p>
+</blockquote>
 <h2 id="previous-readings">Previous readings</h2>
 <ul>
 <li><a href="../index.html">README</a></li>
