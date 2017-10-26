@@ -95,7 +95,7 @@
 <p>Here's the list of the exceptions that can be thrown:</p>
 <ul>
 <li><a href="#shrink-sd-card">Shrink SD Card</a></li>
-<li><a href="#notsupportedexception">NotSupportedException</a></li>
+<li><a href="#map-windows-share-folder-in-ubuntu">Map Windows Share-folder in Ubuntu</a></li>
 <li><a href="#patternnotfoundexception">PatternNotFoundException</a></li>
 <li><a href="#invalidlinenumberexception">InvalidLineNumberException</a></li>
 <li><a href="#differentlinebreaksfoundexception">DifferentLineBreaksFoundException</a></li>
@@ -111,16 +111,14 @@
 <li><a href="https://www.htpcguides.com/how-to-use-sd-card-reader-in-vmplayer-and-vmworkstation/">How to Use SD Card Reader in VMPlayer and VMWorkstation</a></li>
 <li><a href="https://askubuntu.com/questions/591664/files-missing-in-mnt-hgfs-on-ubuntu-vm">Files missing in /mnt/hgfs on Ubuntu VM?</a></li>
 </ul>
-<h2 id="notsupportedexception">NotSupportedException</h2>
-<pre><code class="language-php">&lt;?php
-
-namespace Gnugat\Redaktilo\Exception;
-
-class NotSupportedException extends \Exception implements Exception
-{
-    public function getPattern();
-    public function getSearchStrategies();
-}</code></pre>
+<h2 id="map-windows-share-folder-in-ubuntu">Map Windows Share-folder in Ubuntu</h2>
+<p>please refer to link: <a href="https://askubuntu.com/questions/46183/how-to-map-a-network-drive">How to map a network drive?</a></p>
+<ul>
+<li>smbclient -L 192.168.2.1 -U jerry</li>
+<li>sudo mount -t cifs -o username=jerry //192.168.2.1/jerry /media/share-data/</li>
+<li>sudo chmod -R 755 /media/share-data</li>
+<li>sudo -i (or su -)</li>
+</ul>
 <h2 id="patternnotfoundexception">PatternNotFoundException</h2>
 <pre><code class="language-php">&lt;?php
 
