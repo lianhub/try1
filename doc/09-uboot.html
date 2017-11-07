@@ -98,11 +98,13 @@
 <li><a href="#create-root-filesystem">Create Root Filesystem</a></li>
 <li><a href="#create-sd-card">Create SD Card</a></li>
 <li><a href="#access-to-bbb-serial-console">Access to BBB Serial Console</a></li>
-<li><a href="#boot">Boot</a></li>
+<li><a href="#boot-locally">Boot Locally</a></li>
+<li><a href="#boot-remotely">Boot Remotely</a></li>
 </ul>
 <h2 id="build-u-boot">Build U-Boot</h2>
 <p>Consult the following links:</p>
 <ul>
+<li><a href="https://www.amazon.com/Mastering-Embedded-Linux-Programming-potential/dp/1787283283">Mastering Embedded Linux Programming</a></li>
 <li><a href="https://gist.github.com/eepp/6056325">Building U-Boot and Linux 3.11 from scratch for the BeagleBone, and booting</a></li>
 <li><a href="http://www.jumpnowtek.com/beaglebone/Beaglebone-Black-U-Boot-Notes.html">BeagleBone Black U-Boot</a></li>
 <li><a href="https://www.twam.info/hardware/beaglebone-black/u-boot-on-beaglebone-black">U-Boot on BeagleBone Black</a></li>
@@ -174,9 +176,30 @@ it.</p>
 <li>check tty assignment: dmesg</li>
 <li>sudo screen /dev/ttyUSB0 115200,cs8</li>
 </ul>
-<h2 id="boot">Boot</h2>
+<h2 id="boot-locally">Boot Locally</h2>
 <ul>
 <li>setenv bootargs &quot;earlyprintk console=ttyO0,115200n8 root=/dev/mmcblk0p2 rootwait ro rootfstype=ext4 init=/bin/init&quot;</li>
+</ul>
+<h2 id="boot-remotely">Boot Remotely</h2>
+<ul>
+<li>setenv serverip 192.168.2.139</li>
+<li>setenv ipaddr 192.168.2.193</li>
+<li>tftpboot 0x80200000 zImage</li>
+<li>tftpboot 0x80f00000 am335x-boneblack.dtb</li>
+<li>setenv npath /home/jerry/rootfs</li>
+<li>setenv bootargs console=ttyO0,115200 root=/dev/nfs rw nfsroot=${serverip}:${npath} ip=${ipaddr}</li>
+<li>bootz 0x80200000 - 0x80f00000</li>
+</ul>
+<p>After login:</p>
+<ul>
+<li>mount -t proc proc /proc</li>
+<li>mount /dev/mmcblk0p2 /mnt</li>
+<li>cp -a /home/myrfs/* .</li>
+<li>umount mnt</li>
+</ul>
+<p>Reboot:</p>
+<ul>
+<li>setenv bootargs &quot;earlyprintk console=ttyO0,115200n8 root=/dev/mmcblk0p2 rootwait rw rootfstype=ext4&quot;</li>
 </ul>
 <h2 id="next-readings">Next readings</h2>
 <ul>
