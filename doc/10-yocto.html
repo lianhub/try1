@@ -101,46 +101,14 @@
 <li><a href="#actions">Actions</a>
 <ul>
 <li><a href="#insert">insert</a></li>
-<li><a href="#remove">remove</a></li>
-<li><a href="#replace">replace</a></li>
 </ul></li>
-<li><a href="#cursor">Cursor</a></li>
-<li><a href="#directions">Directions</a>
-<ul>
-<li><a href="#above">above</a></li>
-<li><a href="#below">below</a></li>
-</ul></li>
-<li><a href="#editor">Editor</a></li>
 <li><a href="#file">File</a></li>
 <li><a href="#line">Line</a></li>
-<li><a href="#location">Location</a></li>
-<li><a href="#redaktilo">Redaktilo</a></li>
-<li><a href="#text">Text</a></li>
 </ul>
 <h2 id="actions">Actions</h2>
 <p>Here's the vocabulary for the possible actions on a line.</p>
 <h3 id="insert">insert</h3>
 <p>Should be prefered over the word <code>add</code>.</p>
-<h3 id="remove">remove</h3>
-<p>Should be prefered over the word <code>delete</code>.</p>
-<h3 id="replace">replace</h3>
-<p>Should be prefered over the word <code>change</code>.</p>
-<h2 id="cursor">Cursor</h2>
-<p>Also used to mean the current line.</p>
-<p>An indicator used to know the position in the text.</p>
-<p>This is useful when a pattern occurs many times in the text: it enables the
-editor to select the wanted one.</p>
-<p>The cursor also enables to manipulate the selected element.</p>
-<h2 id="directions">Directions</h2>
-<p>Here's the vocabulary to locate something relatively in a collection of lines.</p>
-<h3 id="above">above</h3>
-<p>Should be prefered over the words <code>over</code>, <code>before</code>, <code>previous</code> or <code>up</code>.</p>
-<h3 id="below">below</h3>
-<p>Should be prefered over the words <code>under</code>, <code>after</code>, <code>next</code> or <code>down</code>.</p>
-<h2 id="editor">Editor</h2>
-<p>Also called &quot;text editor&quot;.</p>
-<p>A piece of software which is able to change the content of a text.
-In the case of Redaktilo, the editor is an object provided by a library.</p>
 <h2 id="file">File</h2>
 <p>Also called &quot;text file&quot;, to be opposed to &quot;binary file&quot;.</p>
 <p>See <a href="#text">Text</a>.</p>
@@ -153,20 +121,6 @@ line break:</p>
 </ul>
 <p>To make it easier for the developers, <strong>Redaktilo</strong> takes care of the line
 break, so you should only provide it with a string stripped of it.</p>
-<h2 id="location">Location</h2>
-<p>The given line number, to which you can relatively search or do something.</p>
-<h2 id="redaktilo">Redaktilo</h2>
-<p>This means <code>editor</code> in esperanto. Technically <code>Tekstoredaktilo</code> should have been
-used (<code>text editor</code>), but it was a bit too long for a project name.</p>
-<h2 id="text">Text</h2>
-<p>Can contain:</p>
-<ul>
-<li>plain text</li>
-<li>JSON</li>
-<li>YAML</li>
-<li>PHP</li>
-<li>etc...</li>
-</ul>
 <h2 id="next-readings">Next readings</h2>
 <ul>
 <li><a href="05-extending.html">Extending</a></li>
