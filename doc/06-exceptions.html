@@ -121,7 +121,8 @@
 <p>please refer to link: <a href="https://askubuntu.com/questions/46183/how-to-map-a-network-drive">How to map a network drive?</a></p>
 <ul>
 <li>smbclient -L 192.168.2.1 -U jerry</li>
-<li>sudo mount -t cifs -o username=jerry //192.168.2.1/jerry /media/share-data/</li>
+<li>sudo mount -t cifs -o username=jerry,vers=1.0 //192.168.2.1/jerry /media/share-data/</li>
+<li>if &quot;host is down&quot;, use &quot;vers=1.0, or 2.0, 3.0&quot;</li>
 <li>sudo chmod -R 755 /media/share-data</li>
 <li>sudo -i (or su -)</li>
 </ul>
