@@ -98,10 +98,10 @@
                 <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
                     <h1 id="pcb">PCB</h1>
 <ul>
-<li><a href="#editor-api">Editor API</a>
+<li><a href="#bom">BOM</a>
 <ul>
-<li><a href="#filesystem-operations">Filesystem operations</a></li>
-<li><a href="#content-navigation">Content navigation</a></li>
+<li><a href="#firefox-extension">Firefox Extension</a></li>
+<li><a href="#runwith">RunWith</a></li>
 <li><a href="#content-manipulation">Content manipulation</a></li>
 <li><a href="#commands">Commands</a></li>
 </ul></li>
@@ -111,13 +111,13 @@
 </ul></li>
 <li><a href="#file-api">File API</a></li>
 </ul>
-<h2 id="editor-api">Editor API</h2>
+<h2 id="bom">BOM</h2>
 <p>The main stateless service:</p>
-<h3 id="filesystem-operations">Filesystem operations</h3>
+<h3 id="firefox-extension">Firefox Extension</h3>
 <p>Trying to open a non existing file will raise an exception, except if <code>true</code> is
 passed as the second parameter. In any case nothing will happen on the
 filesystem until the <code>save</code> method is called.</p>
-<h3 id="content-navigation">Content navigation</h3>
+<h3 id="runwith">RunWith</h3>
 <p><code>Editor</code> relies on <code>SearchEngine</code> in order to find a given pattern in a <code>Text</code>
 and provides by default the following <code>SearchStrategies</code>:</p>
 <ul>
