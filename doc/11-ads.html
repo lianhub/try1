@@ -107,7 +107,7 @@
 <ul>
 <li><a href="#remote-display">Remote Display</a></li>
 <li><a href="#ping-from-pi">Ping from PI</a></li>
-<li><a href="#replace">replace</a></li>
+<li><a href="#about-socket">About Socket</a></li>
 </ul></li>
 <li><a href="#cursor">Cursor</a></li>
 <li><a href="#directions">Directions</a>
@@ -123,6 +123,8 @@
 <li><a href="#text">Text</a></li>
 </ul>
 <h2 id="setup">Setup</h2>
+<p>preliminary stuff.</p>
+<h3 id="remote-display">Remote Display</h3>
 <p>Refer to following for remote access to CX5020:</p>
 <ul>
 <li><a href="https://infosys.beckhoff.com/english.php?content=../content/1033/cx9020_hw/2674624779.html&amp;id=">Enabling a remote display</a></li>
@@ -131,12 +133,24 @@
 <li>Download CreHost.zip/exe</li>
 </ul>
 <p>more</p>
-<h3 id="remote-display">Remote Display</h3>
-<p>Should be prefered over the word <code>add</code>.</p>
 <h3 id="ping-from-pi">Ping from PI</h3>
-<p>Should be prefered over the word <code>delete</code>.</p>
-<h3 id="replace">replace</h3>
-<p>Should be prefered over the word <code>change</code>.</p>
+<p>Set up as following:</p>
+<ul>
+<li>wifi (internet)</li>
+<li>eth0 (EtherCAT master): default</li>
+<li>eth1 (Windows PC, USB-Ethernet Adapter): static ip_address=10.0.0.2</li>
+<li>(use <code>etc/dhcpcd.conf</code>, not <code>/etc/network/interfaces</code>.)</li>
+<li><a href="https://kb.iu.edu/d/aopy">Configure the Windows firewall to allow pings</a></li>
+<li><code>public</code>: File and Printer Sharing (Echo Request - ICMPv4-In).</li>
+</ul>
+<p>more</p>
+<h3 id="about-socket">About Socket</h3>
+<p>Refer to:</p>
+<ul>
+<li><a href="http://www.linuxhowtos.org/C_C++/socket.htm">Sockets Tutorial in Linux</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/windows/desktop/ms737889(v=vs.85).aspx">Running the Winsock Client and Server Code Sample</a></li>
+</ul>
+<p>more</p>
 <h2 id="cursor">Cursor</h2>
 <p>Also used to mean the current line.</p>
 <p>An indicator used to know the position in the text.</p>
