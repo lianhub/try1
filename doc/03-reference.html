@@ -108,9 +108,9 @@
 <ul>
 <li><a href="#firefox--browser-extension">Firefox Browser Extension</a></li>
 <li><a href="#runwith">RunWith</a></li>
-<li><a href="#native-messaging">Native Messaging</a></li>
+<li><a href="#buttonize-digi-key-part-number">Buttonize Digi-Key Part Number</a></li>
 </ul></li>
-<li><a href="#schematic-2">Schematic 2</a>    </li>
+<li><a href="#finalize-schematic">Finalize Schematic</a>    </li>
 <li><a href="#text-api">Text API</a>
 <ul>
 <li><a href="#side-note-on-linebreak">Side note on LineBreak</a></li>
@@ -136,23 +136,26 @@
 <li><a href="https://addons.mozilla.org/en-US/firefox/addon/runwith/">Runs the selected string as a command line parameter of a local program via right-click or Tools menu.</a></li>
 <li>This method is deprecated: as it is not compatible with new version Firefox.</li>
 </ul>
-<h3 id="native-messaging">Native Messaging</h3>
+<h3 id="buttonize-digi-key-part-number">Buttonize Digi-Key Part Number</h3>
 <p>We copy/modify example of &quot;native-messaging&quot;:</p>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Examples">Example extensions</a></li>
 <li>D:\EAGLE-Tools\bom-ex\runwith-native-messaging\add-on-new: <code>manifest.json</code></li>
 <li>--- background.js: connect to <code>ping_pong</code> app</li>
-<li>--- find-dknumber.js: <code>buttonize</code> digikey part number.</li>
-<li>D:\EAGLE-Tools\bom-ex\runwith-native-messaging\app: <code>'ping_pong.json</code></li>
-<li>--- which calls: ping_pong_win.bat</li>
-<li>--- which calls: D:\EAGLE-Tools\bom-ex\Grab-Bag-master\Bom-ex\new-addDKPartToBom-ex.py</li>
-<li>--- which adds to: D:\EAGLE-Tools\bom-ex*-db.txt</li>
+<li>--- find-dknumber.js: <code>buttonize</code> Digi-Key part number.</li>
+<li>Windows Registry for ping_pong app:</li>
+<li>--- <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Native_manifests#Manifest_location">App Manifest Location</a></li>
+<li>--- D:\EAGLE-Tools\bom-ex\runwith-native-messaging: ping-pong.reg</li>
+<li>D:\EAGLE-Tools\bom-ex\runwith-native-messaging\app: <code>ping_pong.json</code></li>
+<li>--- which calls: <code>ping_pong_win.bat</code></li>
+<li>--- which calls: <code>D:\EAGLE-Tools\bom-ex\Grab-Bag-master\Bom-ex\new-addDKPartToBom-ex.py</code></li>
+<li>--- which adds to: <code>D:\EAGLE-Tools\bom-ex\*-db.txt</code></li>
 </ul>
 <blockquote>
 <p><strong>Note</strong>: to jump to a given line number, you can directly use:
 <code>$text-&gt;setCurrentLineNumber($x);</code>.</p>
 </blockquote>
-<h2 id="schematic-2">Schematic 2</h2>
+<h2 id="finalize-schematic">Finalize Schematic</h2>
 <p>Finalize schematic:</p>
 <ul>
 <li>Collect all components to <code>D:\EAGLE-Tools\bom-ex\*-db.txt</code></li>
