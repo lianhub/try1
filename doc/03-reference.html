@@ -127,8 +127,8 @@
 <h3 id="firefox-browser-extension">Firefox Browser Extension</h3>
 <p>Please refer to:</p>
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Examples">Example extensions</a></li>
-<li>Especially, we copy/modify example of &quot;native-messaging&quot;</li>
+<li><a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Your_first_WebExtension">Your first extension</a></li>
+<li>To install: Open <code>about:debugging</code> in Firefox, click <code>Load Temporary Add-on</code> to select your extension.</li>
 </ul>
 <h3 id="runwith">RunWith</h3>
 <p>Please refer to:</p>
@@ -137,18 +137,29 @@
 <li>This method is deprecated: as it is not compatible with new version Firefox.</li>
 </ul>
 <h3 id="native-messaging">Native Messaging</h3>
-<p>You can define your own commands and use them through <code>Editor#run()</code>.</p>
-<p><code>Editor</code> relies on <code>SearchEngine</code> in order to find a given pattern in a <code>Text</code>
-and provides by default the following <code>SearchStrategies</code>:</p>
+<p>We copy/modify example of &quot;native-messaging&quot;:</p>
 <ul>
-<li>regular expression</li>
-<li>strict equality (<code>===</code>)</li>
+<li><a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Examples">Example extensions</a></li>
+<li>D:\EAGLE-Tools\bom-ex\runwith-native-messaging\add-on-new: <code>manifest.json</code></li>
+<li>--- background.js: connect to <code>ping_pong</code> app</li>
+<li>--- find-dknumber.js: <code>buttonize</code> digikey part number.</li>
+<li>D:\EAGLE-Tools\bom-ex\runwith-native-messaging\app: <code>'ping_pong.json</code></li>
+<li>--- which calls: ping_pong_win.bat</li>
+<li>--- which calls: D:\EAGLE-Tools\bom-ex\Grab-Bag-master\Bom-ex\new-addDKPartToBom-ex.py</li>
+<li>--- which adds to: D:\EAGLE-Tools\bom-ex*-db.txt</li>
 </ul>
 <blockquote>
 <p><strong>Note</strong>: to jump to a given line number, you can directly use:
 <code>$text-&gt;setCurrentLineNumber($x);</code>.</p>
 </blockquote>
 <h2 id="schematic-2">Schematic 2</h2>
+<p>Finalize schematic:</p>
+<ul>
+<li>Collect all components to <code>D:\EAGLE-Tools\bom-ex\*-db.txt</code></li>
+<li>Replace components with correct attributes: <code>value</code>, <code>PARTNO</code></li>
+<li><code>PARTNO</code> is the keyword for matching items in database</li>
+<li>Check with <code>D:\EAGLE-Tools\bom-ex\mybom-ex.ulp</code>: click <code>Load database</code></li>
+</ul>
 <h2 id="text-api">Text API</h2>
 <p>One of the main entity:</p>
 <blockquote>
