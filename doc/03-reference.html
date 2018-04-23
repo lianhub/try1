@@ -103,26 +103,41 @@
                 <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
                     <h1 id="pcb">PCB</h1>
 <ul>
+<li><a href="#schematic-draft">Schematic Draft</a></li>
 <li><a href="#bom">BOM</a>
 <ul>
-<li><a href="#firefox-extension">Firefox Extension</a></li>
+<li><a href="#firefox--browser-extension">Firefox Browser Extension</a></li>
 <li><a href="#runwith">RunWith</a></li>
-<li><a href="#content-manipulation">Content manipulation</a></li>
-<li><a href="#commands">Commands</a></li>
+<li><a href="#native-messaging">Native Messaging</a></li>
 </ul></li>
+<li><a href="#schematic-2">Schematic 2</a>    </li>
 <li><a href="#text-api">Text API</a>
 <ul>
 <li><a href="#side-note-on-linebreak">Side note on LineBreak</a></li>
 </ul></li>
 <li><a href="#file-api">File API</a></li>
 </ul>
+<h2 id="schematic-draft">Schematic Draft</h2>
+<p>Draw schematic draft:</p>
+<ul>
+<li>Find as much components (with correct footprint) as you can.</li>
+</ul>
 <h2 id="bom">BOM</h2>
 <p>The main stateless service:</p>
-<h3 id="firefox-extension">Firefox Extension</h3>
-<p>Trying to open a non existing file will raise an exception, except if <code>true</code> is
-passed as the second parameter. In any case nothing will happen on the
-filesystem until the <code>save</code> method is called.</p>
+<h3 id="firefox-browser-extension">Firefox Browser Extension</h3>
+<p>Please refer to:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Examples">Example extensions</a></li>
+<li>Especially, we copy/modify example of &quot;native-messaging&quot;</li>
+</ul>
 <h3 id="runwith">RunWith</h3>
+<p>Please refer to:</p>
+<ul>
+<li><a href="https://addons.mozilla.org/en-US/firefox/addon/runwith/">Runs the selected string as a command line parameter of a local program via right-click or Tools menu.</a></li>
+<li>This method is deprecated: as it is not compatible with new version Firefox.</li>
+</ul>
+<h3 id="native-messaging">Native Messaging</h3>
+<p>You can define your own commands and use them through <code>Editor#run()</code>.</p>
 <p><code>Editor</code> relies on <code>SearchEngine</code> in order to find a given pattern in a <code>Text</code>
 and provides by default the following <code>SearchStrategies</code>:</p>
 <ul>
@@ -133,12 +148,7 @@ and provides by default the following <code>SearchStrategies</code>:</p>
 <p><strong>Note</strong>: to jump to a given line number, you can directly use:
 <code>$text-&gt;setCurrentLineNumber($x);</code>.</p>
 </blockquote>
-<h3 id="content-manipulation">Content manipulation</h3>
-<p>Manipulations are done by default to the current line (or, if the third argument
-is given, to the given location).</p>
-<p>Inserting a new line will set the current one to it.</p>
-<h3 id="commands">Commands</h3>
-<p>You can define your own commands and use them through <code>Editor#run()</code>.</p>
+<h2 id="schematic-2">Schematic 2</h2>
 <h2 id="text-api">Text API</h2>
 <p>One of the main entity:</p>
 <blockquote>
