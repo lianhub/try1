@@ -105,6 +105,7 @@
 <ul>
 <li><a href="#library-framework">Library Framework</a></li>
 <li><a href="#schematic-draft">Schematic Draft</a></li>
+<li><a href="#value-and-partno">Value and Partno</a></li>
 <li><a href="#bom">BOM</a>
 <ul>
 <li><a href="#firefox--browser-extension">Firefox Browser Extension</a></li>
@@ -129,6 +130,11 @@
 <p>Draw schematic draft:</p>
 <ul>
 <li>Find as much components (with correct footprint) as you can.</li>
+</ul>
+<h2 id="value-and-partno">Value and Partno</h2>
+<p>Based on partlist and BOM excel sheet:</p>
+<ul>
+<li>use: <code>D:\EAGLE-Tools\bom-ex\value-partno\write-sheets.js</code>.</li>
 </ul>
 <h2 id="bom">BOM</h2>
 <p>The main stateless service:</p>
@@ -167,9 +173,9 @@
 <p>Finalize schematic:</p>
 <ul>
 <li>Collect all components to <code>D:\EAGLE-Tools\bom-ex\*-db.txt</code></li>
-<li>Replace components with correct attributes: <code>value</code>, <code>PARTNO</code></li>
-<li><code>PARTNO</code> is the keyword for matching items in database</li>
-<li>Check with <code>D:\EAGLE-Tools\bom-ex\mybom-ex.ulp</code>: click <code>Load database</code></li>
+<li>Replace components with correct attributes: <code>value</code>, <code>PARTNO</code> (manufacturer)</li>
+<li><code>PARTNO</code> (manufacturer) is the keyword for matching items in database</li>
+<li>Check with <code>D:\EAGLE-Tools\bom-ex\mybom-ex.ulp</code>: click <code>Load DB</code></li>
 </ul>
 <h2 id="text-api">Text API</h2>
 <p>One of the main entity:</p>
