@@ -113,6 +113,7 @@
 <li><a href="#buttonize-digi-key-part-number">Buttonize Digi-Key Part Number</a></li>
 </ul></li>
 <li><a href="#finalize-schematic">Finalize Schematic</a>    </li>
+<li><a href="#finishing-board">Finishing Board</a>   </li>
 <li><a href="#text-api">Text API</a>
 <ul>
 <li><a href="#side-note-on-linebreak">Side note on LineBreak</a></li>
@@ -177,6 +178,25 @@
 <li>Replace components with correct attributes: <code>value</code>, <code>PARTNO</code> (manufacturer)</li>
 <li><code>PARTNO</code> (manufacturer) is the keyword for matching items in database</li>
 <li>Check with <code>D:\EAGLE-Tools\bom-ex\mybom-ex.ulp</code>: click <code>Load DB</code></li>
+</ul>
+<h2 id="finishing-board">Finishing Board</h2>
+<p><a href="https://www.element14.com/community/thread/31231/l/how-to-change-font-size-throughout-brd?displayFullThread=true">How to change font size throughout brd</a>
+<a href="https://www.element14.com/community/thread/18176/l/how-do-i-change-all-fonts-to-vector-on-the-same-pcb-at-once?displayFullThread=true">How do I change all fonts to vector on the same PCB at once?</a>
+To smash all the parts, try:</p>
+<ul>
+<li>display none tOrigin bOrigin;</li>
+<li>group all;</li>
+<li>smash (&gt;0 0);</li>
+<li>display last;</li>
+</ul>
+<p>To change the font and ratio, try:</p>
+<ul>
+<li>display none tNames bNames;</li>
+<li>group all;</li>
+<li>change font vector (&gt;0 0);</li>
+<li>change size 40mil (C&gt;0 0);</li>
+<li>change ratio 15 (&gt;0 0);</li>
+<li>display last;</li>
 </ul>
 <h2 id="text-api">Text API</h2>
 <p>One of the main entity:</p>
