@@ -106,6 +106,7 @@
 <li><a href="#build-u-boot">Build U-Boot</a>    </li>
 <li><a href="#build-kernel">Build Kernel</a></li>
 <li><a href="#create-root-filesystem">Create Root Filesystem</a></li>
+<li><a href="#enable-usb-passthrough-in-esxi">Enable USB Passthrough in ESXI</a></li>
 <li><a href="#create-sd-card">Create SD Card</a></li>
 <li><a href="#access-to-bbb-serial-console">Access to BBB Serial Console</a></li>
 <li><a href="#boot-locally">Boot Locally</a></li>
@@ -161,6 +162,13 @@ it.</p>
 <li>mkdir bin dev proc sys</li>
 <li>wget <a href="http://www.busybox.net/downloads/binaries/1.21.1/busybox-armv7l">http://www.busybox.net/downloads/binaries/1.21.1/busybox-armv7l</a> -O bin/busybox</li>
 <li>chmod +x bin/busybox</li>
+</ul>
+<h2 id="enable-usb-passthrough-in-esxi">Enable USB Passthrough in ESXI</h2>
+<ul>
+<li>Insert USB(SD-card) stick</li>
+<li>Select VM, then <code>Edit Settings</code></li>
+<li>Add <code>USB Device</code>, not <code>USB Controller</code></li>
+<li>Start VM</li>
 </ul>
 <h2 id="create-sd-card">Create SD Card</h2>
 <ul>
@@ -218,7 +226,7 @@ it.</p>
 <h2 id="tftp-rootfs">TFTP Rootfs</h2>
 <p>Refer to <a href="https://lists.denx.de/pipermail/u-boot/2014-February/174589.html">Writing to SD partitions from u-boot</a></p>
 <h2 id="boot-over-uart">Boot over UART</h2>
-<p>Use TeraTerm terminal. Please refer to <a href="http://processors.wiki.ti.com/index.php/AM335x_U-Boot_User%27s_Guide">AM335x U-Boot User's Guide</a> </p>
+<p>Use TeraTerm terminal. Please refer to <a href="http://processors.wiki.ti.com/index.php/AM335x_U-Boot_User%27s_Guide">AM335x U-Boot User's Guide</a></p>
 <h2 id="next-readings">Next readings</h2>
 <ul>
 <li><a href="06-exceptions.html">Exceptions</a></li>
